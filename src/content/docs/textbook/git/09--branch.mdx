@@ -6,6 +6,9 @@ sidebar:
   order: 9
 ---
 
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+export const CLI_OR_GUI_SYNC_KEY = 'git::cli-or-gui';
+
 ## ブランチを切る利点
 
 ### Mainブランチは安全地帯
@@ -36,16 +39,87 @@ Mainブランチはみんなで開発をするとコンフリクト（コード�
 
 ### ブランチの一覧を表示してみる
 
+<Tabs syncKey={CLI_OR_GUI_SYNC_KEY}>
+<TabItem label="VSCode">
+
 VS Codeの左下にある、ブランチまたはタグのチェックアウトを押しましょう。
 おそらく `main` と表示されているはずです。
 
+</TabItem>
+<TabItem label="CLI">
+
+以下のコマンドで、今あるブランチの一覧を表示します。
+
+```bash
+git branch
+```
+
+`*` がついているところが今いるブランチです。おそらく `main` または `master` と表示されているはずです。
+
+```text
+* main
+```
+
+:::note[注意]
+ブランチ名が `master` の場合と `main` の場合があるので、確認をお願いします。
+`main` だった場合はうまく読み替えてください。
+:::
+
+</TabItem>
+</Tabs>
+
 ### ブランチを作ってみる
+
+<Tabs syncKey={CLI_OR_GUI_SYNC_KEY}>
+<TabItem label="VSCode">
 
 1. 「新しいブランチの作成...」を押します
 2. 作成したいブランチ名を記述して、エンターを押しましょう
    - 今回は `newBranch` という名前にします
 
 これで新しいブランチが作成され、自動的にそのブランチに切り替わります。
+
+</TabItem>
+<TabItem label="CLI">
+
+以下のコマンドで、新しいブランチを作成します。
+
+```bash
+git branch newBranch
+```
+
+ブランチが作成されたか確認してみましょう。
+
+```bash
+git branch
+```
+
+```text
+* main
+  newBranch
+```
+
+newBranchが作成されました。ただし、まだ `main` ブランチにいる状態です。
+
+次に、作成したブランチに移動（チェックアウト）します。
+
+```bash
+git checkout newBranch
+```
+
+```bash
+git branch
+```
+
+```text
+  main
+* newBranch
+```
+
+`*` が `newBranch` に移動し、新しいブランチに切り替わりました。
+
+</TabItem>
+</Tabs>
 
 ## ファイルを変更してコミットしてみる
 
@@ -70,23 +144,86 @@ VS Codeの左下にある、ブランチまたはタグのチェックアウト�
 
 ### コミットする
 
+<Tabs syncKey={CLI_OR_GUI_SYNC_KEY}>
+<TabItem label="VSCode">
+
 1. ステージするファイルをaddする
 2. コミットメッセージを書く
    - 例：「新しいメッセージを記述」
 3. コミットを押す
 
+</TabItem>
+<TabItem label="CLI">
+
+以下のコマンドで、ファイルをステージしてコミットします。
+
+```bash
+git add -A
+git commit -m "indexに文を追加した2"
+```
+
+</TabItem>
+</Tabs>
+
 ### 変更を同期する
+
+<Tabs syncKey={CLI_OR_GUI_SYNC_KEY}>
+<TabItem label="VSCode">
 
 変更をGitHub側に反映させるために、「変更の同期」を押しましょう。
 
 これで新しい変更を保存することが出来ました。
 
+</TabItem>
+<TabItem label="CLI">
+
+変更をGitHub側に反映させるために、以下のコマンドを実行します。
+
+```bash
+git push origin newBranch
+```
+
+これで新しい変更を保存することが出来ました。
+
+</TabItem>
+</Tabs>
+
 ## GitGraphを確認してみよう
+
+<Tabs syncKey={CLI_OR_GUI_SYNC_KEY}>
+<TabItem label="VSCode">
 
 おそらく、2つのブランチがあり、mainブランチの先にnewBranchがあると思います。
 
-- **newBranch** - 新しく作成したブランチ（最新のコミットがある）
-- **main** - 元のブランチ
+**newBranch** - 新しく作成したブランチ（最新のコミットがある）
+
+**main** - 元のブランチ
+
+</TabItem>
+<TabItem label="CLI">
+
+以下のコマンドで、ブランチの状態をグラフ形式で確認できます。
+
+```bash
+git log --graph --all
+```
+
+短い版でより見やすく表示することもできます。
+
+```bash
+git log --graph --all --oneline
+```
+
+おそらく、2つのブランチがあり、mainブランチの先にnewBranchがあると思います。
+
+**newBranch** - 新しく作成したブランチ（最新のコミットがある）
+
+**main** - 元のブランチ
+
+今はただの点に見えますが、今後Gitをたくさん使っていくとどんどんカラフルになります。
+
+</TabItem>
+</Tabs>
 
 ## ブランチを切った後の流れ
 

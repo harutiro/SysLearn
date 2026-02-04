@@ -6,6 +6,9 @@ sidebar:
   order: 8
 ---
 
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+export const CLI_OR_GUI_SYNC_KEY = 'git::cli-or-gui';
+
 ## 先ほどと同じ流れでファイルを編集してみる
 
 先ほど作った `index.html` を使って少し編集をしてみましょう。
@@ -28,16 +31,60 @@ sidebar:
 
 ## 変更をコミットする
 
+<Tabs syncKey={CLI_OR_GUI_SYNC_KEY}>
+  <TabItem label="VSCode">
+
 1. ステージするファイルを「+」ボタンでaddする
 2. コミットメッセージ（変更箇所をわかりやすくするメモ）を書く
    - 例：「HelloWorldを追記」
 3. 「コミット」ボタンを押す
 
+  </TabItem>
+  <TabItem label="CLI">
+
+1. 変更をステージに追加する
+
+```bash
+git add index.html
+```
+
+2. コミットする
+
+```bash
+git commit -m "HelloWorldを追記"
+```
+
+  </TabItem>
+</Tabs>
+
 ## 変更をGitHubに反映させる
+
+<Tabs syncKey={CLI_OR_GUI_SYNC_KEY}>
+  <TabItem label="VSCode">
 
 変更をGitHub側に反映させるために、「変更の同期」を押しましょう。
 
 これで新しい変更を保存することが出来ました。
+
+  </TabItem>
+  <TabItem label="CLI">
+
+変更をGitHub側に反映させるために、プッシュを行います。
+
+```bash
+git push origin main
+```
+
+これで新しい変更を保存することが出来ました。
+
+GitHub上のリポジトリの変更点をローカルに反映させる場合は、プルを行います。
+
+```bash
+git pull origin main
+```
+
+  </TabItem>
+</Tabs>
 
 ## Tips: ファイル名の色について
 

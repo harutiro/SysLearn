@@ -6,11 +6,17 @@ sidebar:
   order: 10
 ---
 
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+export const CLI_OR_GUI_SYNC_KEY = 'git::cli-or-gui';
+
 ## チェックアウトとは
 
 チェックアウト（checkout）は、ブランチを移動するためのコマンドです。異なるブランチに切り替えることで、そのブランチの状態でファイルを確認・編集できます。
 
 ## ブランチを移動してみる
+
+<Tabs syncKey={CLI_OR_GUI_SYNC_KEY}>
+  <TabItem label="VSCode">
 
 ### VSCodeでのチェックアウト方法
 
@@ -27,17 +33,103 @@ sidebar:
 
 これでmainブランチに戻ることができました。
 
+  </TabItem>
+  <TabItem label="CLI">
+
+### CLIでのチェックアウト方法
+
+まず、現在のブランチとファイルの中身を確認してみましょう。
+
+**Windowsの方:**
+```bash
+type index.html
+```
+
+**Macの方:**
+```bash
+cat index.html
+```
+
+newBranchで追加した内容が表示されるはずです。
+
+次に、mainブランチに移動します。
+
+```bash
+git checkout main
+```
+
+ブランチが切り替わったか確認しましょう。
+
+```bash
+git branch
+```
+
+```text
+* main
+  newBranch
+```
+
+`*` が `main` に移動し、mainブランチに戻ることができました。
+
+  </TabItem>
+</Tabs>
+
 ## ファイルが戻っているか確認する
+
+<Tabs syncKey={CLI_OR_GUI_SYNC_KEY}>
+  <TabItem label="VSCode">
 
 ファイルを確認することで、先ほど記述した `<p>ここは新しいブランチです</p>` がなくなっているのがわかります。
 
 チェックアウトによって、ブランチごとに異なるファイルの状態を切り替えることができます。
 
+  </TabItem>
+  <TabItem label="CLI">
+
+ファイルの中身を確認してみましょう。
+
+**Windowsの方:**
+```bash
+type index.html
+```
+
+**Macの方:**
+```bash
+cat index.html
+```
+
+先ほど記述した内容がなくなっているのがわかります。
+
+チェックアウトによって、ブランチごとに異なるファイルの状態を切り替えることができます。
+
+  </TabItem>
+</Tabs>
+
 ## ログを確認してみよう
+
+<Tabs syncKey={CLI_OR_GUI_SYNC_KEY}>
+  <TabItem label="VSCode">
 
 Git Graphをみると、mainのブランチに対して、青く選択されているのがわかります。これにより、現在どのブランチにいるかを視覚的に確認できます。
 
+  </TabItem>
+  <TabItem label="CLI">
+
+以下のコマンドでログを確認できます。
+
+```bash
+git log --graph --all --oneline
+```
+
+現在のHEADが `main` を指していることが確認できます。これにより、現在どのブランチにいるかを確認できます。
+
+  </TabItem>
+</Tabs>
+
 ## Tips: Git Graphでチェックアウトをする
+
+<Tabs syncKey={CLI_OR_GUI_SYNC_KEY}>
+  <TabItem label="VSCode">
 
 Git Graphからも簡単にチェックアウトができます。
 
@@ -55,6 +147,36 @@ Git Graphからも簡単にチェックアウトができます。
 2. その後、「Checkout the existing branch & pull changes」を押します
 
 これにより、リモートブランチの最新の変更を取得しながらチェックアウトできます。
+
+  </TabItem>
+  <TabItem label="CLI">
+
+CLIでは、`git checkout` コマンドを使ってブランチを切り替えます。
+
+### よく使うコマンド
+
+```bash
+# ブランチを切り替える
+git checkout <ブランチ名>
+
+# 例: mainブランチに切り替える
+git checkout main
+
+# 例: newBranchブランチに切り替える
+git checkout newBranch
+```
+
+### リモートの変更を取得しながらチェックアウトする
+
+リモートブランチの最新の変更を取得しながらチェックアウトする場合は、以下のようにします。
+
+```bash
+git checkout main
+git pull origin main
+```
+
+  </TabItem>
+</Tabs>
 
 ## コマンドラインでのチェックアウト
 

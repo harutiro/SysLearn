@@ -6,6 +6,9 @@ sidebar:
   order: 7
 ---
 
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+export const CLI_OR_GUI_SYNC_KEY = 'git::cli-or-gui';
+
 ## Gitの大きな流れ
 
 Gitでは以下の4つの操作を繰り返して開発を進めます。
@@ -16,6 +19,9 @@ Gitでは以下の4つの操作を繰り返して開発を進めます。
 - **Pull** - リモート（ネット）から変更点をもらう
 
 ## プロジェクトを作成する
+
+<Tabs syncKey={CLI_OR_GUI_SYNC_KEY}>
+  <TabItem label="VSCode">
 
 ### 1. フォルダを開く
 
@@ -40,6 +46,44 @@ VS Codeのエクスプローラーから「フォルダーを開く」を押し�
 
 これでGitを使える状態になりました。
 
+  </TabItem>
+  <TabItem label="CLI">
+
+### 1. ターミナルを起動する
+
+**Mac の場合**: <kbd>Command</kbd> + <kbd>Space</kbd> で Spotlight を開き、「ターミナル」と入力して Enter を押します。
+
+**Windows の場合**: <kbd>Win</kbd> + <kbd>R</kbd> で「ファイル名を指定して実行」を開き、`cmd` と入力して OK を押します。
+
+### 2. プロジェクトフォルダを作成
+
+```bash
+# srcフォルダがある場合はその中に作成（なければスキップ）
+mkdir src
+cd src
+
+# プロジェクトフォルダを作成
+mkdir GitTest
+cd GitTest
+```
+
+### 3. リポジトリの初期化
+
+```bash
+git init
+```
+
+以下のような出力が表示されれば成功です。
+
+```
+Initialized empty Git repository in <パス>/GitTest/.git/
+```
+
+これでGitを使える状態になりました。
+
+  </TabItem>
+</Tabs>
+
 ## ファイルを作成して、コーディングをしよう
 
 ### ワークツリーとステージとリポジトリ
@@ -52,9 +96,26 @@ Gitには3つの領域があります。
 
 ### ファイルの作成
 
+<Tabs syncKey={CLI_OR_GUI_SYNC_KEY}>
+  <TabItem label="VSCode">
+
 1. エクスプローラーをクリック
 2. 新規ファイル作成アイコンをクリック
 3. ファイル名を入力（今回は `index.html`）してエンターを押して作成
+
+  </TabItem>
+  <TabItem label="CLI">
+
+```bash
+# Macの場合
+touch index.html
+
+# Windowsの場合
+type nul > index.html
+```
+
+  </TabItem>
+</Tabs>
 
 ### HTMLテンプレートの入力
 
@@ -76,12 +137,49 @@ Gitには3つの領域があります。
 
 ## Addをしてみる
 
+<Tabs syncKey={CLI_OR_GUI_SYNC_KEY}>
+  <TabItem label="VSCode">
+
 1. サイドバーの「ソース管理」をクリック
 2. 変更されたファイル（`index.html`）の横にある「+」ボタン（変更をステージ）を押してAddをする
 
 ステージされている変更にファイルが入っていればOKです。
 
+  </TabItem>
+  <TabItem label="CLI">
+
+```bash
+# 特定のファイルをステージに追加
+git add index.html
+
+# すべてのファイルをステージに追加する場合
+git add -A
+```
+
+ステータスを確認してみましょう。
+
+```bash
+git status
+```
+
+以下のような出力が表示されます。
+
+```
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   index.html
+```
+
+ファイルがステージに追加されていることが確認できます。
+
+  </TabItem>
+</Tabs>
+
 ## コミットしてみる
+
+<Tabs syncKey={CLI_OR_GUI_SYNC_KEY}>
+  <TabItem label="VSCode">
 
 1. コミットメッセージ（変更箇所をわかりやすくするメモ）を入力欄に書く
    - 例：「htmlのテンプレートを追加」
@@ -89,13 +187,55 @@ Gitには3つの領域があります。
 
 これでステージにあったファイルがリポジトリに保存されました。
 
+  </TabItem>
+  <TabItem label="CLI">
+
+```bash
+git commit -m "初めてのコミット"
+```
+
+`-m` オプションの後にコミットメッセージを入力します。
+
+これでステージにあったファイルがリポジトリに保存されました。
+
+  </TabItem>
+</Tabs>
+
 ## コミットした履歴を見てみる
+
+<Tabs syncKey={CLI_OR_GUI_SYNC_KEY}>
+  <TabItem label="VSCode">
 
 変更履歴を確認するために、VS Code左下の「Git Graph」を押します。
 
 Git Graphを見ることで、Gitの現状の状態を把握することができます。
 
+  </TabItem>
+  <TabItem label="CLI">
+
+```bash
+git log
+```
+
+以下のような出力が表示されます。
+
+```
+commit 0cd513265131d7f2d915e9965d5b10ba94e80a44 (HEAD -> master)
+Author: harutiro <harutiro2027@outlook.jp>
+Date:   Wed Jul 13 10:48:44 2022 +0900
+
+    初めてのコミット
+```
+
+コミットをした履歴をみることが出来ます。
+
+  </TabItem>
+</Tabs>
+
 ## GitHubでリポジトリを作成する
+
+<Tabs syncKey={CLI_OR_GUI_SYNC_KEY}>
+  <TabItem label="VSCode">
 
 ### 1. Branchの発行
 
@@ -115,6 +255,45 @@ Git Graphを見ることで、Gitの現状の状態を把握することがで�
 右下に「GitHub上で開く」というポップアップが表示されるので、「GitHub上で開く」を押します。
 
 作成されているファイルが表示されていたら成功です。
+
+  </TabItem>
+  <TabItem label="CLI">
+
+### 1. GitHubでリポジトリを作成
+
+1. https://github.com にアクセスする
+2. 右上のアイコンをクリックして「Your profile」を選択
+3. 「Repositories」タブをクリック
+4. 「New」ボタンをクリック
+5. リポジトリ名を入力（今回は `GitTest`）
+6. Public または Private を選択
+7. 「Create repository」をクリック
+
+### 2. SSHのURLをコピー
+
+作成されたリポジトリページで「SSH」が選択されていることを確認し、URLをコピーします。
+
+### 3. リモートリポジトリを追加
+
+```bash
+git remote add origin <コピーしたURL>
+```
+
+例:
+```bash
+git remote add origin git@github.com:harutiro/GitTest.git
+```
+
+### 4. プッシュする
+
+```bash
+git push origin main
+```
+
+GitHubのリポジトリページを更新して、ファイルが表示されていたら成功です。
+
+  </TabItem>
+</Tabs>
 
 ## まとめ
 
