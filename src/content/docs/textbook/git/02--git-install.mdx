@@ -1,0 +1,98 @@
+---
+title: Gitのインストール
+description: Mac/WindowsでのGitのインストール手順を解説します
+slug: textbook/git/git-install
+sidebar:
+  order: 2
+---
+
+## ターミナル/コマンドプロンプトを起動しよう
+
+### Macの場合
+
+1. `Command` + `Space` キーを押す
+2. 「ターミナル」と入力
+3. Enterを押す
+
+ターミナルが起動します。
+
+### Windowsの場合
+
+1. `Windows` キー + `R` キーを押す
+2. 「cmd」と入力
+3. OKを押す
+
+コマンドプロンプトが立ち上がるはずです。
+
+## Gitが入っているか確認してみよう
+
+以下のコマンドを入力して、Gitがインストールされているか確認しましょう。
+
+```bash
+git version
+```
+
+出力例：
+```
+git version 2.33.0.windows.2
+```
+
+Gitのバージョンが帰ってこない場合、インストールが出来ていません。インストールから始めましょう！
+
+## Gitをインストールしてみる（Mac）
+
+Homebrewを使ってGitをインストールします。
+
+```bash
+brew install git
+```
+
+インストール後、バージョンを確認します。
+
+```bash
+git -v
+```
+
+出力例：
+```
+git version 2.37.0
+```
+
+バージョンが帰ってきたらインストール完了です。
+
+### Homebrewが入っていない方へ
+
+Homebrewが入っていない方は以下のコマンドを実行してください。
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+```bash
+echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> ~/.zprofile
+```
+
+```bash
+eval $(/opt/homebrew/bin/brew shellenv)
+```
+
+Homebrewがインストールされたか確認します。
+
+```bash
+brew -v
+```
+
+出力例：
+```
+Homebrew 3.5.4
+Homebrew/homebrew-core (git revision 7d69acd3065; last commit 2022-07-13)
+Homebrew/homebrew-cask (git revision ce084d024b; last commit 2022-07-13)
+```
+
+## インストール手順（Windows）
+
+Windowsの場合は、以下のURLを参照してください。
+
+https://prog-8.com/docs/git-env-win
+
+チャプター1「Gitのインストール」まで行ってください。

@@ -94,6 +94,17 @@ export default defineConfig({
           //   ],
           // },
           {
+            label: "Git・GitHub",
+            link: "/textbook/git/version-control",
+            icon: "seti:git",
+            items: [
+              {
+                label: "Git入門",
+                autogenerate: { directory: "textbook/git" },
+              },
+            ],
+          },
+          {
             label: "Web",
             link: "/textbook/web/for-classes/html-structure-basic",
             icon: "document",
