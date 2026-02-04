@@ -18,6 +18,8 @@ sidebar:
 
 Git Bashを起動します。
 
+![](./_images/vscode-page-044.png)
+
 ## ユーザー名とアドレスを登録する
 
 GitHubで登録したユーザー名とメールアドレスを設定します。
@@ -39,6 +41,8 @@ git config user.name
 # メールアドレスを確認
 git config user.email
 ```
+
+![](./_images/vscode-page-047.png)
 
 ## SSHを用いてログインをする理由
 
@@ -64,6 +68,8 @@ ls -al | grep .ssh
 ```
 
 `.ssh`フォルダが表示されない場合は作成します。
+
+![](./_images/vscode-page-050.png)
 
 ```bash
 # .sshフォルダを作成
@@ -93,6 +99,8 @@ ls ~/.ssh
 
 `id_ed25519` と `id_ed25519.pub` の2つのファイルが表示されれば成功です。
 
+![](./_images/vscode-page-052.png)
+
 ### 4. 公開鍵の内容をコピー
 
 SSHキーの公開鍵が表示されるので、出力された内容を全てコピーします。
@@ -106,17 +114,30 @@ cat ~/.ssh/id_ed25519.pub
 ssh-ed25519 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 ```
 
+![](./_images/vscode-page-053.png)
+
 ## SSHキーをGitHubに登録する
 
 1. https://github.com にアクセスする
 2. 右上のアイコンをクリックして、**Settings** を押す
+
+![](./_images/vscode-page-055.png)
+
 3. 左側のメニューから **SSH and GPG keys** を押す
+
+![](./_images/vscode-page-056.png)
+
 4. **New SSH key** ボタンを押す
+
+![](./_images/vscode-page-057.png)
+
 5. 以下の情報を入力:
    - **Title**: わかりやすい名前をつける（例: MacBookAir）
    - **Key type**: Authentication Key
    - **Key**: コピーした公開鍵を貼り付ける
 6. **Add SSH key** ボタンを押す
+
+![](./_images/vscode-page-058.png)
 
 登録した名前が表示されれば成功です。
 
@@ -142,3 +163,5 @@ Hi <ユーザー名>! You've successfully authenticated, but GitHub does not pro
 ```
 
 `Hi` の後にユーザー名が出力されれば成功です。
+
+![](./_images/vscode-page-060.png)

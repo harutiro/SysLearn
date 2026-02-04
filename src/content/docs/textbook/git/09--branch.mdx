@@ -15,6 +15,8 @@ export const CLI_OR_GUI_SYNC_KEY = 'git::cli-or-gui';
 
 コードを書くときにMainブランチは、エラーが絶対出ない安全地帯にする必要があります。
 
+![](./_images/vscode-page-120.png)
+
 ### 自由に開発できる場所を作る
 
 ブランチを切ることによって、どんなにメチャクチャにしてもいい場所をつくって開発することができます。
@@ -23,9 +25,13 @@ export const CLI_OR_GUI_SYNC_KEY = 'git::cli-or-gui';
 - 新規機能を作成する際も、Mainブランチに影響を与えずに開発できる
 - バグやエラーが発生しても、Mainブランチは安全なまま
 
+![](./_images/vscode-page-121.png)
+
 ## コンフリクトとは
 
 Mainブランチはみんなで開発をするとコンフリクト（コードの衝突）が起きることもあります。
+
+![](./_images/vscode-page-122.png)
 
 例えば、AさんとBさんが同じファイルの同じ行を編集した場合：
 - Aさん：1行目はアラートの表示を書く
@@ -44,6 +50,8 @@ Mainブランチはみんなで開発をするとコンフリクト（コード�
 
 VS Codeの左下にある、ブランチまたはタグのチェックアウトを押しましょう。
 おそらく `main` と表示されているはずです。
+
+![](./_images/vscode-page-124.png)
 
 </TabItem>
 <TabItem label="CLI">
@@ -74,8 +82,13 @@ git branch
 <TabItem label="VSCode">
 
 1. 「新しいブランチの作成...」を押します
+
+![](./_images/vscode-page-125.png)
+
 2. 作成したいブランチ名を記述して、エンターを押しましょう
    - 今回は `newBranch` という名前にします
+
+![](./_images/vscode-page-126.png)
 
 これで新しいブランチが作成され、自動的にそのブランチに切り替わります。
 
@@ -152,6 +165,8 @@ git branch
    - 例：「新しいメッセージを記述」
 3. コミットを押す
 
+![](./_images/vscode-page-129.png)
+
 </TabItem>
 <TabItem label="CLI">
 
@@ -171,6 +186,8 @@ git commit -m "indexに文を追加した2"
 <TabItem label="VSCode">
 
 変更をGitHub側に反映させるために、「変更の同期」を押しましょう。
+
+![](./_images/vscode-page-130.png)
 
 これで新しい変更を保存することが出来ました。
 
@@ -194,6 +211,8 @@ git push origin newBranch
 <TabItem label="VSCode">
 
 おそらく、2つのブランチがあり、mainブランチの先にnewBranchがあると思います。
+
+![](./_images/vscode-page-131.png)
 
 **newBranch** - 新しく作成したブランチ（最新のコミットがある）
 

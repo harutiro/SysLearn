@@ -18,6 +18,8 @@ Gitでは以下の4つの操作を繰り返して開発を進めます。
 - **Push** - リモート（ネット）に打ち上げる
 - **Pull** - リモート（ネット）から変更点をもらう
 
+![](./_images/vscode-page-091.png)
+
 ## プロジェクトを作成する
 
 <Tabs syncKey={CLI_OR_GUI_SYNC_KEY}>
@@ -27,24 +29,36 @@ Gitでは以下の4つの操作を繰り返して開発を進めます。
 
 VS Codeのエクスプローラーから「フォルダーを開く」を押します。
 
+![](./_images/vscode-page-092.png)
+
 ### 2. 新規フォルダを作成
 
 プロジェクトを作成したい場所で「新規フォルダ」を押します。
+
+![](./_images/vscode-page-093.png)
 
 ### 3. プロジェクト名を設定
 
 プロジェクト名を適宜設定して「作成」を押します。今回は `GitTest` とします。
 
+![](./_images/vscode-page-094.png)
+
 ### 4. フォルダを開く
 
 作成したフォルダを選択して「開く」を押します。
+
+![](./_images/vscode-page-095.png)
 
 ### 5. リポジトリの初期化
 
 1. サイドバーの「ソース管理」アイコンをクリック
 2. 「リポジトリを初期化する」を押す
 
+![](./_images/vscode-page-096.png)
+
 これでGitを使える状態になりました。
+
+![](./_images/vscode-page-097.png)
 
   </TabItem>
   <TabItem label="CLI">
@@ -103,6 +117,8 @@ Gitには3つの領域があります。
 2. 新規ファイル作成アイコンをクリック
 3. ファイル名を入力（今回は `index.html`）してエンターを押して作成
 
+![](./_images/vscode-page-098.png)
+
   </TabItem>
   <TabItem label="CLI">
 
@@ -120,6 +136,8 @@ type nul > index.html
 ### HTMLテンプレートの入力
 
 `index.html` ファイルで `html:5` と入力してエンターを押すと、自動でHTMLテンプレートが入力されます。
+
+![](./_images/vscode-page-099.png)
 
 ```html
 <!DOCTYPE html>
@@ -143,7 +161,11 @@ type nul > index.html
 1. サイドバーの「ソース管理」をクリック
 2. 変更されたファイル（`index.html`）の横にある「+」ボタン（変更をステージ）を押してAddをする
 
+![](./_images/vscode-page-101.png)
+
 ステージされている変更にファイルが入っていればOKです。
+
+![](./_images/vscode-page-102.png)
 
   </TabItem>
   <TabItem label="CLI">
@@ -185,6 +207,8 @@ Changes to be committed:
    - 例：「htmlのテンプレートを追加」
 2. 「コミット」ボタンを押す
 
+![](./_images/vscode-page-103.png)
+
 これでステージにあったファイルがリポジトリに保存されました。
 
   </TabItem>
@@ -208,7 +232,11 @@ git commit -m "初めてのコミット"
 
 変更履歴を確認するために、VS Code左下の「Git Graph」を押します。
 
+![](./_images/vscode-page-104.png)
+
 Git Graphを見ることで、Gitの現状の状態を把握することができます。
+
+![](./_images/vscode-page-105.png)
 
   </TabItem>
   <TabItem label="CLI">
@@ -242,6 +270,8 @@ Date:   Wed Jul 13 10:48:44 2022 +0900
 1. ソース管理を開く
 2. 「Branch の発行」を押す
 
+![](./_images/vscode-page-106.png)
+
 ### 2. リポジトリの設定
 
 1. GitHubでのリポジトリ名を記述します（今回は同じく `GitTest` とする）
@@ -250,11 +280,17 @@ Date:   Wed Jul 13 10:48:44 2022 +0900
    - **Public** - 全世界に公開されます
    - 今回はPrivateにしておきましょう
 
+![](./_images/vscode-page-107.png)
+
 ### 3. 確認
 
 右下に「GitHub上で開く」というポップアップが表示されるので、「GitHub上で開く」を押します。
 
+![](./_images/vscode-page-108.png)
+
 作成されているファイルが表示されていたら成功です。
+
+![](./_images/vscode-page-109.png)
 
   </TabItem>
   <TabItem label="CLI">

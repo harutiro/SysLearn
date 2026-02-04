@@ -23,6 +23,8 @@ export const CLI_OR_GUI_SYNC_KEY = 'git::cli-or-gui';
 1. VSCodeの左下にある、ブランチまたはタグのチェックアウトを押します
    - おそらく `newBranch` と表示されているはずです
 
+![](./_images/vscode-page-136.png)
+
 2. チェックアウトするブランチまたはタグを選択するメニューが表示されます
    - 「新しいブランチの作成...」
    - 「新しいブランチを以下から作成...」
@@ -30,6 +32,8 @@ export const CLI_OR_GUI_SYNC_KEY = 'git::cli-or-gui';
    - リモートブランチ（例: `origin/newBranch`、`origin/main`）
 
 3. `main` をダブルクリックすると、チェックアウトできます
+
+![](./_images/vscode-page-137.png)
 
 これでmainブランチに戻ることができました。
 
@@ -81,6 +85,8 @@ git branch
 
 ファイルを確認することで、先ほど記述した `<p>ここは新しいブランチです</p>` がなくなっているのがわかります。
 
+![](./_images/vscode-page-140.png)
+
 チェックアウトによって、ブランチごとに異なるファイルの状態を切り替えることができます。
 
   </TabItem>
@@ -112,6 +118,8 @@ cat index.html
 
 Git Graphをみると、mainのブランチに対して、青く選択されているのがわかります。これにより、現在どのブランチにいるかを視覚的に確認できます。
 
+![](./_images/vscode-page-141.png)
+
   </TabItem>
   <TabItem label="CLI">
 
@@ -137,7 +145,11 @@ Git Graphからも簡単にチェックアウトができます。
 
 1. チェックアウトしたいブランチをダブルクリックします
 
+![](./_images/vscode-page-142.png)
+
 2. 選択がそのブランチに代わり、チェックアウトが完了します
+
+![](./_images/vscode-page-143.png)
 
 ### ポップアップが出てきた場合
 
@@ -145,6 +157,8 @@ Git Graphからも簡単にチェックアウトができます。
 
 1. 問題がなければ、「Checkout Branch」を押します
 2. その後、「Checkout the existing branch & pull changes」を押します
+
+![](./_images/vscode-page-144.png)
 
 これにより、リモートブランチの最新の変更を取得しながらチェックアウトできます。
 
